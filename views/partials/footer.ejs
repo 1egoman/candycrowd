@@ -18,6 +18,25 @@
     })
   }
 
+  // icon for an inactive house
+  var inactive = {
+    path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+    fillColor: 'red',
+    fillOpacity: 0.8,
+    scale: 0.1,
+    strokeColor: 'red',
+    strokeWeight: 2
+  }
+
+
+
+
+
+
+
+
+
+
   // google map init
   function initMap() {
     navigator.geolocation.getCurrentPosition(function(geo) {
@@ -53,6 +72,12 @@
     $(".rate-view").css("display", "block")
   }
 
+  is_old = function(i) {
+    HOUR = 60 * 60 * 1000
+    current = new Date().getTime()
+    return i.last_updated + HOUR < current
+  }
+
 
 
   var socket = io()
@@ -73,7 +98,7 @@
           position: house,
           map: map,
           title: house.rating.toString(),
-          icon: candy_pin[Math.floor(house.rating)]
+          icon: is_old(house) ? inactive : candy_pin[Math.floor(house.rating)]
         });
 
         marker.addListener('click', function() {
