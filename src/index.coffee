@@ -47,7 +47,7 @@ exports.main = ->
     #   lat: 0,
     #   lng: 0
     # }
-    DIST_THRES = 1
+    DIST_THRES = 12/111093
     socket.on "new:house", (payload) ->
       console.log "new house addition", payload
 
