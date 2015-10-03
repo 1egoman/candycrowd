@@ -6,6 +6,19 @@
   google_api_key = "AIzaSyBjForTCddy3tS81cvKcxUoyDvxUVdtKY0"
   var map
 
+  // generate differing sized candy icons
+  var candy_pin = []
+  for (i = 1; i <= 10; i++) {
+    candy_pin.push({
+      path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
+      fillColor: 'yellow',
+      fillOpacity: 0.8,
+      scale: 0.03 * i,
+      strokeColor: 'gold',
+      strokeWeight: 2
+    })
+  }
+
   // google map init
   function initMap() {
     navigator.geolocation.getCurrentPosition(function(geo) {
@@ -47,7 +60,8 @@
         marker = new google.maps.Marker({
           position: house,
           map: map,
-          title: house.rating.toString()
+          title: house.rating.toString(),
+          icon: candy_pin[Math.floor(house.rating)]
         });
 
         marker.addListener('click', function() {
