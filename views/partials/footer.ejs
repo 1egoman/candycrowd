@@ -3,12 +3,11 @@
 <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjForTCddy3tS81cvKcxUoyDvxUVdtKY0&callback=initMap"></script>
 <script>
-  google_api_key = "AIzaSyBjForTCddy3tS81cvKcxUoyDvxUVdtKY0"
-  var map, us_location
+  var map, us_location, all_houses = []
 
   // generate differing sized candy icons
   var candy_pin = []
-  for (i = 1; i <= 10; i++) {
+  for (i = 1; i <= 11; i++) {
     candy_pin.push({
       path: 'M 125,5 155,90 245,90 175,145 200,230 125,180 50,230 75,145 5,90 95,90 z',
       fillColor: 'yellow',
@@ -49,6 +48,12 @@
   setInterval(reset_map_center, 1000)
 
 
+  open_rate_view = function() {
+    $(".main-view").css("display", "none")
+    $(".rate-view").css("display", "block")
+  }
+
+
 
   var socket = io()
   socket.on("new:house:ack", function(p) {
@@ -56,9 +61,12 @@
     get_houses()
   })
 
+  // update houses on the map
   socket.on("get:house:ack", function(h) {
     setTimeout(function() {
       $(".house-container").html(JSON.stringify(h, null, 2))
+
+      all_houses.forEach(function(i){ i.setMap(null)  })
 
       h.forEach(function(house) {
         marker = new google.maps.Marker({
@@ -71,6 +79,7 @@
         marker.addListener('click', function() {
           alert(house.rating);
         });
+        all_houses.push(marker)
       })
     }, 1000)
   })
@@ -92,6 +101,8 @@
 
   new_house = function() {
     add_new_house(parseInt($(".ratings-box").val()))
+    $(".main-view").css("display", "block")
+    $(".rate-view").css("display", "none")
   }
   get_houses()
 </script>

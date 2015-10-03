@@ -4,15 +4,21 @@
   <body>
     <header><% include partials/header %></header>
 
-    <div class="container house-container"></div>
+    <!-- <div class="container house&#45;container"></div> -->
+
+    <div class="container main-view">
+
+      <!-- the map -->
+      <div id="map" style="height: 80vh;"></div>
+    </div>
 
     <!-- add a new house -->
-    <div class="container">
+    <div class="container rate-view" style="display: none;">
       <input type="range" class="ratings-box" min="1" value="5" max="10" step="1">
       <button onclick="new_house()">add rating</button>
     </div>
 
-    <div id="map" style="height: 80vh;"></div>
+    <button onclick="open_rate_view()">rate view</button>
 
     <footer><% include partials/footer %></footer>
   </body>

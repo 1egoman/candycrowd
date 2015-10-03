@@ -67,6 +67,7 @@ exports.main = ->
         # there isn't a new house there
         else if house is null
           payload.num_p = 1
+          payload.last_updated = new Date().getTime()
           new House payload
           .save (err) ->
             if err
@@ -78,7 +79,7 @@ exports.main = ->
         else
           house.rating = ((house.rating * house.num_p) + payload.rating) / (house.num_p+1)
           house.num_p += 1
-          console.log house
+          house.last_updated = new Date().getTime()
 
           house.save (err) ->
             socket.emit "new:house:ack", err or status: "ok"

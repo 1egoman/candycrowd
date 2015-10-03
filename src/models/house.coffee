@@ -11,6 +11,7 @@ mongoose = require 'mongoose'
 schema = mongoose.Schema
   rating: Number
   num_p: Number
+  last_updated: Number
 
   lat: Number
   lng: Number
