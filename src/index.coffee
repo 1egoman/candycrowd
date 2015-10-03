@@ -80,6 +80,8 @@ exports.main = ->
           house.rating = ((house.rating * house.num_p) + payload.rating) / (house.num_p+1)
           house.num_p += 1
           house.last_updated = new Date().getTime()
+          house.types = house.types.concat payload.types
+          console.log house.types, payload.types
 
           house.save (err) ->
             socket.emit "new:house:ack", err or status: "ok"
