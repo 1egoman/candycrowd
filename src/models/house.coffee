@@ -13,6 +13,8 @@ schema = mongoose.Schema
   num_p: Number
   last_updated: Number
 
+  types: Array
+
   lat: Number
   lng: Number
 
