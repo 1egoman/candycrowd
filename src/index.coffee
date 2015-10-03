@@ -6,9 +6,8 @@
  * Licensed under the MIT license.
 ###
 
-'use strict';
+'use strict'
 
-app = require("express")()
 chalk = require "chalk"
 path = require "path"
 bodyParser = require "body-parser"
@@ -17,9 +16,9 @@ bodyParser = require "body-parser"
 exports.main = ->
 
   # connect to database
-  
   exports.connectToDB()
   
+  app = require('express')()
 
   # set ejs as view engine
   app.set "view engine", "ejs"
@@ -28,14 +27,18 @@ exports.main = ->
   exports.middleware app
 
   # some sample routes
-  
   app.get "/", (req, res) ->
       res.render "index"
   
+  http = require('http').Server app
+  io = require('socket.io') http
+
+  io.on 'connection', (socket) ->
+    console.log "connect"
 
   # listen for requests
   PORT = process.argv.port or 8000
-  app.listen PORT, ->
+  http.listen PORT, ->
     console.log chalk.blue "-> :#{PORT}"
 
 exports.middleware = (app) ->
