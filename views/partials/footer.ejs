@@ -4,7 +4,7 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjForTCddy3tS81cvKcxUoyDvxUVdtKY0&callback=initMap"></script>
 <script>
   google_api_key = "AIzaSyBjForTCddy3tS81cvKcxUoyDvxUVdtKY0"
-  var map
+  var map, us_location
 
   // generate differing sized candy icons
   var candy_pin = []
@@ -33,12 +33,16 @@
   }
 
 
-  // reset map center to the current location
+  // reset our location on the map every second
   reset_map_center = function() {
     navigator.geolocation.getCurrentPosition(function(geo) {
-      map.panTo({
-        lat: geo.coords.latitude,
-        lng: geo.coords.longitude
+      us_location && us_location.setMap(null)
+      us_location = new google.maps.Marker({
+        position: {
+          lat: geo.coords.latitude,
+          lng: geo.coords.longitude
+        },
+        map: map
       })
     })
   }
