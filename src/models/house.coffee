@@ -9,6 +9,10 @@
 mongoose = require 'mongoose'
 
 schema = mongoose.Schema
-  name: String
+  rating: Number
+  num_p: Number
 
-module.exports = mongoose.model 'Schema', schema
+  lat: Number
+  lng: Number
+
+module.exports = mongoose.model 'House', schema

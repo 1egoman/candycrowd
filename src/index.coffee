@@ -12,6 +12,8 @@ chalk = require "chalk"
 path = require "path"
 bodyParser = require "body-parser"
 
+House = require "./models/house"
+
 
 exports.main = ->
 
@@ -33,8 +35,71 @@ exports.main = ->
   http = require('http').Server app
   io = require('socket.io') http
 
+  # socket.io
   io.on 'connection', (socket) ->
-    console.log "connect"
+    console.log chalk.cyan "connection from socket.io"
+
+
+
+    # add a new house
+    # format of {
+    #   rating: 0-10,
+    #   lat: 0,
+    #   lng: 0
+    # }
+    DIST_THRES = 1
+    socket.on "new:house", (payload) ->
+      console.log "new house addition", payload
+
+      # is there a house in the local region? Within DIST_THRES?
+      House.findOne
+        lat:
+          $lt: payload.lat+DIST_THRES
+          $gt: payload.lat-DIST_THRES
+        lng:
+          $lt: payload.lng+DIST_THRES
+          $gt: payload.lng-DIST_THRES
+      , (err, house) ->
+        if err
+          socket.emit "new:house:ack", err
+
+
+        # there isn't a new house there
+        else if house is null
+          payload.num_p = 1
+          new House payload
+          .save (err) ->
+            if err
+              socket.emit "new:house:ack", err
+            else
+              socket.emit "new:house:ack", status: "ok"
+
+        # there is already a house
+        else
+          house.rating = ((house.rating * house.num_p) + payload.rating) / (house.num_p+1)
+          house.num_p += 1
+          console.log house
+
+          house.save (err) ->
+            console.log err
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   # listen for requests
   PORT = process.argv.port or 8000
@@ -62,7 +127,7 @@ exports.middleware = (app) ->
 
 
 exports.connectToDB = ->
-  require("./db") module.exports.mongouri or module.exports.db or "mongodb://user:password@example.com:port/database"
+  require("./db") module.exports.mongouri or module.exports.db or "mongodb://cc:cc@ds029224.mongolab.com:29224/candycrowd"
 
 
 exports.main()
