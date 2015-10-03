@@ -81,7 +81,7 @@ exports.main = ->
           console.log house
 
           house.save (err) ->
-            console.log err
+            socket.emit "new:house:ack", err or status: "ok"
 
 
 
@@ -92,6 +92,14 @@ exports.main = ->
 
 
 
+    # get all houses
+    socket.on "get:house", (payload) ->
+      House.find {}
+      .exec (err, houses) ->
+        if err
+          socket.emit "get:house:ack", err
+        else
+          socket.emit "get:house:ack", houses
 
 
 

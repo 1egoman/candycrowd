@@ -4,8 +4,12 @@
   <body>
     <header><% include partials/header %></header>
 
+    <div class="container house-container"></div>
+
+    <!-- add a new house -->
     <div class="container">
-      <h1>`Allo, World!</h1>
+      <input type="range" class="ratings-box" min="1" value="5" max="10" step="1">
+      <button onclick="new_house()">add rating</button>
     </div>
 
     <footer><% include partials/footer %></footer>
