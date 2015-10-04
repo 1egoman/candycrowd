@@ -50,7 +50,7 @@
         zoom: 18
       });
     })
-    get_houses()
+    setTimeout(get_houses, 1000)
   }
 
 
@@ -98,6 +98,7 @@
   // update houses on the map
   socket.on("get:house:ack", function(h) {
     /* $(".house-container").html(JSON.stringify(h, null, 2)) */
+    console.log(h)
 
     // clear all houses
     all_houses.forEach(function(i){ i.setMap(null)  })
