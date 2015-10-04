@@ -114,7 +114,7 @@ exports.main = ->
 
 
   # listen for requests
-  PORT = process.argv.port or 8000
+  PORT = process.env.PORT or 8000
   http.listen PORT, ->
     console.log chalk.blue "-> :#{PORT}"
 
