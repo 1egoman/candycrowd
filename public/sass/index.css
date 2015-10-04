@@ -4903,7 +4903,7 @@ button.close {
   .hidden-print {
     display: none !important; } }
 
-.rate-btn {
+.rate-btn, .add-btn {
   width: 100%;
   background: #2ab573;
   border: 0px;
@@ -4945,3 +4945,19 @@ button.close {
     /* Hides the slider so custom styles can be added */
     border-color: transparent;
     color: transparent; }
+
+table {
+  margin-top: 36px;
+  height: 82%;
+  width: 100%; }
+  table td {
+    width: 20%;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20px; }
+    table td img {
+      margin-bottom: 10px; }
+
+.add {
+  background: #2ab573;
+  color: #fff; }
