@@ -51,7 +51,7 @@
 
 
   // google map init
-  function initMap() {
+  function initialize() {
     navigator.geolocation.getCurrentPosition(function(geo) {
       map = new google.maps.Map(document.getElementById('map'), {
       center: {
@@ -63,7 +63,7 @@
     })
     setTimeout(get_houses, 1000)
   }
-
+  setTimeout(initialize, 1000)
 
   // reset our location on the map every second
   reset_map_center = function() {
