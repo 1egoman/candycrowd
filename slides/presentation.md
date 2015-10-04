@@ -12,7 +12,6 @@ title: "Candy Crowd"
 
 -- 
 
-# The Solution
-- Crowd-sourcing
-- Good-candy meter
-- Mobile app
+# Hack Upstate 2015
+## Ryan Gaus and Nathan Christensen
+## rgaus.net and bla

@@ -80,6 +80,8 @@ exports.main = ->
           house.rating = ((house.rating * house.num_p) + payload.rating) / (house.num_p+1)
           house.num_p += 1
           house.last_updated = new Date().getTime()
+          house.types = house.types.concat payload.types
+          console.log house.types, payload.types
 
           house.save (err) ->
             socket.emit "new:house:ack", err or status: "ok"
@@ -97,10 +99,12 @@ exports.main = ->
     socket.on "get:house", (payload) ->
       House.find {}
       .exec (err, houses) ->
+        console.log houses
         if err
           socket.emit "get:house:ack", err
         else
           socket.emit "get:house:ack", houses
+          socket.broadcast.emit "get:house:ack", houses
 
 
 
@@ -111,7 +115,7 @@ exports.main = ->
 
 
   # listen for requests
-  PORT = process.argv.port or 8000
+  PORT = process.env.PORT or 8000
   http.listen PORT, ->
     console.log chalk.blue "-> :#{PORT}"
 

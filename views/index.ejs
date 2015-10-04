@@ -6,19 +6,46 @@
 
     <!-- <div class="container house&#45;container"></div> -->
 
-    <div class="container main-view">
+    <div class="main-view">
 
       <!-- the map -->
-      <div id="map" style="height: 80vh;"></div>
+      <div id="map" style="height: 90vh;"></div>
+
+      <button onclick="open_rate_view()" class="rate-btn">Rate a house</button>
     </div>
+
+    <div class="blurred-bg" style="display: none;" onclick="close_rate_view()"></div>
 
     <!-- add a new house -->
-    <div class="container rate-view" style="display: none;">
+    <div class="rate-view" style="display: none;">
       <input type="range" class="ratings-box" min="1" value="5" max="10" step="1">
-      <button onclick="new_house()">add rating</button>
+
+      <table>
+        <tr>
+          <td onclick="types.push('taffy'); new_house()" >
+            <img src="http://placehold.it/50/50" />
+            taffy
+          </td>
+          <td onclick="types.push('chocolate'); new_house()" >
+            <img src="http://placehold.it/50/50" />
+            chocolate
+          </td>
+          <td onclick="types.push('gummies'); new_house()" >
+            <img src="http://placehold.it/50/50" />
+            gummies
+          </td>
+          <td onclick="types.push('bad'); new_house()" >
+            <img src="http://placehold.it/50/50" />
+            bad stuff
+          </td>
+          <td onclick="new_house()" class="add" style="font-size: 20px;">
+            Add
+          </td>
+        </tr>
+      </table>
+
     </div>
 
-    <button onclick="open_rate_view()">rate view</button>
 
     <footer><% include partials/footer %></footer>
   </body>
