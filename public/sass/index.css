@@ -4961,3 +4961,11 @@ table {
 .add {
   background: #2ab573;
   color: #fff; }
+
+.blurred-bg {
+  background: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 90vh;
+  position: absolute;
+  top: 0px;
+  left: 0px; }
