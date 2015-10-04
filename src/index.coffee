@@ -104,6 +104,7 @@ exports.main = ->
           socket.emit "get:house:ack", err
         else
           socket.emit "get:house:ack", houses
+          socket.broadcast.emit "get:house:ack", houses
 
 
 
