@@ -48,6 +48,7 @@
         zoom: 18
       });
     })
+    get_houses()
   }
 
 
@@ -88,25 +89,24 @@
 
   // update houses on the map
   socket.on("get:house:ack", function(h) {
-    setTimeout(function() {
-      $(".house-container").html(JSON.stringify(h, null, 2))
+    /* $(".house-container").html(JSON.stringify(h, null, 2)) */
 
-      all_houses.forEach(function(i){ i.setMap(null)  })
+    // clear all houses
+    all_houses.forEach(function(i){ i.setMap(null)  })
 
-      h.forEach(function(house) {
-        marker = new google.maps.Marker({
-          position: house,
-          map: map,
-          title: house.rating.toString(),
-          icon: is_old(house) ? inactive : candy_pin[Math.floor(house.rating)]
-        });
+    h.forEach(function(house) {
+      marker = new google.maps.Marker({
+        position: house,
+        map: map,
+        title: house.rating.toString(),
+        icon: is_old(house) ? inactive : candy_pin[Math.floor(house.rating)]
+      });
 
-        marker.addListener('click', function() {
-          alert(house.types.join(", "));
-        });
-        all_houses.push(marker)
-      })
-    }, 1000)
+      marker.addListener('click', function() {
+        alert(house.types.join(", "));
+      });
+      all_houses.push(marker)
+    })
   })
 
   // add a new house with the current location
@@ -130,6 +130,5 @@
     $(".main-view").css("display", "block")
     $(".rate-view").css("display", "none")
   }
-  get_houses()
 
 </script>
