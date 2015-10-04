@@ -31,6 +31,17 @@
   }
 
 
+  // the icon for the user
+  var user = {
+    path: 'M64.8,38.2c0,5.3,5.6,26.2,3.9,30.5c-2.3,5.7-5.9,0.2-10.6-0.3c-4.8-0.5-10.5,2.8-15.2,2.8c-4,0-7.7-4.7-12.1-3.5c-5.5,1.5-9.9,6-12.2,0.8c-2-4.4-2.4-25-2.4-30.4c0-16.9,10.9-30.5,24.3-30.5S64.8,21.4,64.8,38.2z',
+    fillColor: 'white',
+    fillOpacity: 1,
+    scale: 0.5,
+    strokeColor: 'black',
+    strokeWeight: 2,
+    anchor: {x: 40, y: 30}
+  }
+
 
 
 
@@ -63,7 +74,8 @@
           lat: geo.coords.latitude,
           lng: geo.coords.longitude
         },
-        map: map
+        map: map,
+        icon: user
       })
     })
   }
@@ -131,13 +143,13 @@
 
   get_houses = function() {
     socket.emit("get:house")
-    $(".blurred-bg").css("display", "none")
   }
 
   new_house = function() {
     add_new_house(parseInt($(".ratings-box").val()), types)
     $(".main-view").css("display", "block")
     $(".rate-view").css("display", "none")
+    $(".blurred-bg").css("display", "none")
   }
 
 </script>

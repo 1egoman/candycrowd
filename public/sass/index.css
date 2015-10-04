@@ -4954,7 +4954,8 @@ table {
     width: 25%;
     text-align: center;
     cursor: pointer;
-    font-size: 10px; }
+    font-size: 10px;
+    border: 1px solid #000; }
     table td img {
       margin-bottom: 10px; }
 
