@@ -4,14 +4,15 @@ title: "Candy Crowd"
 --
 
 # Candy Crowd
+![text  describing it](assets/Title.png)
 
 --
 
 # The Problem
-## Who has the good candy on Halloween?
+## Where is the good candy on Halloween night?
 
 -- 
 
 # Hack Upstate 2015
 ## Ryan Gaus and Nathan Christensen
-## rgaus.net and bla
+## rgaus.net
