@@ -6,3 +6,9 @@
 h1 {
   font-size: 250%;
 }
+
+img {
+  width: 400px;
+  margin: 0px auto;
+  display: block;
+}
