@@ -4902,3 +4902,46 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
+
+.rate-btn {
+  width: 100%;
+  background: #2ab573;
+  border: 0px;
+  height: 10vh;
+  color: #FFF;
+  font-size: 30px; }
+
+.rate-view {
+  width: 100%;
+  height: 33.33333%;
+  background: #878787;
+  position: absolute;
+  top: 66.66667%;
+  padding-top: 40px; }
+  .rate-view input[type=range] {
+    -webkit-appearance: none;
+    /* Hides the slider so that custom slider can be made */
+    width: 90%;
+    /* Specific width is required for Firefox. */
+    background: #2ab573;
+    height: 10px;
+    border-radius: 5px;
+    margin-left: 5%; }
+  .rate-view input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: 4px solid #fff;
+    height: 36px;
+    width: 36px;
+    border-radius: 18px;
+    background: #2ab573;
+    cursor: pointer; }
+  .rate-view input[type=range]:focus {
+    outline: none;
+    /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */ }
+  .rate-view input[type=range]::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    /* Hides the slider so custom styles can be added */
+    border-color: transparent;
+    color: transparent; }
