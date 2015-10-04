@@ -4913,10 +4913,10 @@ button.close {
 
 .rate-view {
   width: 100%;
-  height: 33.33333%;
+  height: 40vh;
   background: #878787;
   position: absolute;
-  top: 66.66667%;
+  top: 60vh;
   padding-top: 40px; }
   .rate-view input[type=range] {
     -webkit-appearance: none;
@@ -4948,10 +4948,10 @@ button.close {
 
 table {
   margin-top: 36px;
-  height: 82%;
+  height: 75px;
   width: 100%; }
   table td {
-    width: 20%;
+    width: 25%;
     text-align: center;
     cursor: pointer;
     font-size: 10px; }
@@ -4960,7 +4960,10 @@ table {
 
 .add {
   background: #2ab573;
-  color: #fff; }
+  color: #fff;
+  width: 100%;
+  border: 0px;
+  height: 10vh; }
 
 .blurred-bg {
   background: rgba(0, 0, 0, 0.5);
