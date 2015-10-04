@@ -91,7 +91,6 @@
   var socket = io()
   socket.on("new:house:ack", function(p) {
     console.log("Got a response: "+JSON.stringify(p))
-    $(".blurred-bg").css("display", "none")
     get_houses()
   })
 
@@ -132,6 +131,7 @@
 
   get_houses = function() {
     socket.emit("get:house")
+    $(".blurred-bg").css("display", "none")
   }
 
   new_house = function() {
