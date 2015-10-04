@@ -68,7 +68,7 @@ exports.main = ->
         else if house is null
           payload.num_p = 1
           payload.last_updated = new Date().getTime()
-          new House payload
+          new House(payload)
           .save (err) ->
             if err
               socket.emit "new:house:ack", err
