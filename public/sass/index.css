@@ -4951,9 +4951,10 @@ input[type=range]::-ms-track {
   padding-top: 40px; }
 
 table {
-  margin-top: 36px;
-  height: 75px;
-  width: 100%; }
+  max-height: 100%;
+  width: 100%;
+  max-width: 500px;
+  margin: 4vh auto 0px auto; }
   table td {
     width: 25%;
     text-align: center;
@@ -4961,14 +4962,16 @@ table {
     font-size: 10px;
     border: 1px solid #000; }
     table td img {
-      margin-bottom: 10px; }
+      margin-bottom: 3vh; }
 
 .add {
   background: #2ab573;
   color: #fff;
   width: 100%;
   border: 0px;
-  height: 10vh; }
+  height: 10vh;
+  position: absolute;
+  bottom: 0px; }
 
 .blurred-bg {
   background: rgba(0, 0, 0, 0.5);
