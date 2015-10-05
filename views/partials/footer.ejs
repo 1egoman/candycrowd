@@ -71,7 +71,6 @@
 
   // reset our location on the map every second
   reset_map_center = function(pos) {
-    console.log(pos)
     navigator.geolocation.getCurrentPosition(function(geo) {
       us_location && us_location.setMap(null)
       us_location = new google.maps.Marker({
@@ -85,6 +84,7 @@
     })
   }
   navigator.geolocation.watchPosition(reset_map_center)
+  reset_map_center()
 
 
   open_rate_view = function() {
