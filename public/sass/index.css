@@ -4934,6 +4934,16 @@ input[type=range]::-ms-track {
   border-color: transparent;
   color: transparent; }
 
+#map .no-geo h1, #map .no-geo p {
+  margin: 10px; }
+#map .no-geo h1 {
+  font-size: 21px;
+  text-align: center; }
+#map .no-geo p {
+  width: 300px;
+  margin: 20px auto;
+  font-size: 16px; }
+
 .rate-btn, .add-btn {
   width: 100%;
   background: #2ab573;
@@ -4949,16 +4959,6 @@ input[type=range]::-ms-track {
   position: absolute;
   top: 60vh;
   padding-top: 40px; }
-
-#map h1, #map p {
-  margin: 10px; }
-#map h1 {
-  font-size: 21px;
-  text-align: center; }
-#map p {
-  width: 300px;
-  margin: 20px auto;
-  font-size: 16px; }
 
 table {
   max-height: 100%;
