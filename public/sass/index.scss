@@ -33,6 +33,21 @@ $green: #2ab573;
 
 }
 
+// the map geolocation errors
+#map {
+  h1, p {
+    margin: 10px;
+  }
+  h1 {
+    font-size: 21px;
+    text-align: center;
+  }
+  p {
+    width: 300px;
+    margin: 20px auto;
+    font-size: 16px;
+  }
+}
 
 table {
   max-height: 100%;
