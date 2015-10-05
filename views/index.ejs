@@ -10,19 +10,21 @@
 
       <!-- the map -->
       <div id="map" style="height: 90vh;">
-        <h1>We can't get your position :(</h1>
-        <p>
-        Your browser may be asking you to allow geolocation, and <strong>you need to
-          allow this to use CandyCrowd.</strong>
-        </p>
-        <p>
-          Otherwise, if your device doesn't support
-          geolocation, please switch to a device with geolocation available (any
-          modern browser should have this).
-        </p>
-        <p>
-          (On Android, location services must be enabled.)
-        </p>
+        <div class="no-geo" style="display: none;">
+          <h1>We can't get your position :(</h1>
+          <p>
+          Your browser may be asking you to allow geolocation, and <strong>you need to
+            allow this to use CandyCrowd.</strong>
+          </p>
+          <p>
+            Otherwise, if your device doesn't support
+            geolocation, please switch to a device with geolocation available (any
+            modern browser should have this).
+          </p>
+          <p>
+            (On Android, location services must be enabled.)
+          </p>
+        </div>
       </div>
 
       <button onclick="open_rate_view()" class="rate-btn">Rate a house</button>
