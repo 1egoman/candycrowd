@@ -9,12 +9,32 @@
     <div class="main-view">
 
       <!-- the map -->
-      <div id="map" style="height: 90vh;"></div>
+      <div id="map" style="height: 90vh;">
+        <div class="no-geo" style="display: none;">
+          <h1>We can't get your position :(</h1>
+          <p>
+          Your browser may be asking you to allow geolocation, and <strong>you need to
+            allow this to use CandyCrowd.</strong>
+          </p>
+          <p>
+            Otherwise, if your device doesn't support
+            geolocation, please switch to a device with geolocation available (any
+            modern browser should have this).
+          </p>
+          <p>
+            (On Android, location services must be enabled.)
+          </p>
+        </div>
+      </div>
 
       <button onclick="open_rate_view()" class="rate-btn">Rate a house</button>
     </div>
 
-    <div class="blurred-bg" style="display: none;" onclick="close_rate_view()"></div>
+    <div class="blurred-bg" style="display: none;" onclick="close_rate_view()">
+      <div class="about-app">
+        Made by <a href="http://rgaus.net">Ryan Gaus</a>, with art by Nathan Christensen
+      </div>
+    </div>
 
     <!-- add a new house -->
     <div class="rate-view" style="display: none;">
@@ -23,16 +43,16 @@
       <table>
         <tr>
           <td onclick="types.push('taffy'); new_house()" >
-            <img src="assets/Taffy.svg" />
+            <img src="assets/img/Taffy.svg" />
           </td>
           <td onclick="types.push('chocolate'); new_house()" >
-            <img src="assets/coco.svg" />
+            <img src="assets/img/coco.svg" />
           </td>
           <td onclick="types.push('gummies'); new_house()" >
-            <img src="assets/LifeSaver.svg" />
+            <img src="assets/img/LifeSaver.svg" />
           </td>
           <td onclick="types.push('bad'); new_house()" >
-            <img src="assets/Shit.svg" />
+            <img src="assets/img/Shit.svg" />
           </td>
         </tr>
       </table>
@@ -40,6 +60,40 @@
         Add
       </button>
 
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">House Information</h4>
+          </div>
+          <div class="modal-body">
+
+            <!-- candy types -->
+            <img class="selected-img selected-img-taffy" src="assets/img/Taffy.svg" />
+            <img class="selected-img selected-img-coco" src="assets/img/coco.svg" />
+            <img class="selected-img selected-img-lifesaver" src="assets/img/LifeSaver.svg" />
+            <img class="selected-img selected-img-shit" src="assets/img/Shit.svg" />
+
+            <!-- other stuff -->
+            <ul style="list-style: none; padding-left: 0px;">
+              <li>
+                <strong>Rating:</strong> <span class="selected-rating"></span>
+              </li>
+              <li>
+                <strong>Latitude:</strong> <span class="selected-geo-lat"></span>
+              </li>
+              <li>
+                <strong>Longitude:</strong> <span class="selected-geo-lng"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
 
 

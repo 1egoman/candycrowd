@@ -96,14 +96,25 @@ exports.main = ->
 
 
     # get all houses
+    # how big to search inside, in degrees
+    # 0.15 is a pretty good balance I think
+    SEARCH_RADIUS = 0.15
     socket.on "get:house", (payload) ->
-      House.find {}, (err, houses) ->
-        console.log houses
-        if err
-          socket.emit "get:house:ack", err
-        else
-          socket.emit "get:house:ack", houses
-          socket.broadcast.emit "get:house:ack", houses
+      if payload.lat and payload.lng
+        House.find
+          lat:
+            $lt: payload.lat+SEARCH_RADIUS
+            $gt: payload.lat-SEARCH_RADIUS
+          lng:
+            $lt: payload.lng+SEARCH_RADIUS
+            $gt: payload.lng-SEARCH_RADIUS
+        , (err, houses) ->
+          # console.log houses
+          if err
+            socket.emit "get:house:ack", err
+          else
+            socket.emit "get:house:ack", houses
+            socket.broadcast.emit "get:house:ack", houses
 
 
 
