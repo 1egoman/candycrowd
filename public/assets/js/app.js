@@ -144,7 +144,7 @@
       marker.addListener('click', function() {
 
         // update the modal
-        $(".modal .selected-rating").html(house.rating / 10 * 100 + "%")
+        $(".modal .selected-rating").html(round(house.rating / 10 * 100, 2) + "%")
         $(".modal .selected-geo-lat").html(house.lat)
         $(".modal .selected-geo-lng").html(house.lng)
 
