@@ -1,6 +1,11 @@
 // libraries
 @import "bootstrap";
 
+@mixin border-radius($radius: 0px) {
+      -webkit-border-radius: $radius;
+         -moz-border-radius: $radius;
+              border-radius: $radius;
+    }
 // include additional styles here
 $bg: #878787;
 $green: #2ab573;
@@ -32,6 +37,36 @@ $green: #2ab573;
   padding-top: 40px;
 }
 
+.modal-dialog {
+  margin: 0px;
+}
+
+.modal-content {
+  box-shadow: none;
+  @include border-radius();
+  background: $bg;
+
+  .modal-header {
+    border-bottom-color: transparent;
+  }
+
+  .modal-footer {
+    padding: 0px;
+    border-top-color: transparent;
+  }
+
+  .btn {
+    background: $green;
+    color: #fff;
+    width: 100%;
+    border: 0px;
+    height: 10vh;
+    font-size: 30px;
+    @include border-radius();
+  }
+
+}
+
 .selected-img {
   display: none;
   width: 40px;
@@ -48,7 +83,6 @@ table {
     text-align: center;
     cursor: pointer;
     font-size: 10px;
-    border: 1px solid #000;
     img { margin-bottom: 3vh;  }
   }
 }
@@ -64,6 +98,7 @@ table {
   bottom: 0px;
 }
 
+// blurred bg for the bottom popup
 .blurred-bg {
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
