@@ -37,11 +37,11 @@ $green: #2ab573;
   padding-top: 40px;
 }
 
+// house info modal dialog
 .modal-dialog {
   margin: 0px;
   width: 100%;
 }
-
 .modal-content {
   box-shadow: none;
   @include border-radius();
@@ -107,4 +107,16 @@ table {
   position: absolute;
   top: 0px;
   left: 0px;
+}
+
+// about div
+.about-app {
+  @extend .add;
+  padding: 6px;
+  font-size: 12px;
+  color: #fff;
+  position: static;
+  height: auto;
+  text-align: center;
+  a { color: #fff; text-decoration: underline; }
 }

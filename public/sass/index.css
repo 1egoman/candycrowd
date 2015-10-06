@@ -5003,7 +5003,7 @@ table {
     table td img {
       margin-bottom: 3vh; }
 
-.add {
+.add, .about-app {
   background: #2ab573;
   color: #fff;
   width: 100%;
@@ -5019,3 +5019,14 @@ table {
   position: absolute;
   top: 0px;
   left: 0px; }
+
+.about-app {
+  padding: 6px;
+  font-size: 12px;
+  color: #fff;
+  position: static;
+  height: auto;
+  text-align: center; }
+  .about-app a {
+    color: #fff;
+    text-decoration: underline; }
