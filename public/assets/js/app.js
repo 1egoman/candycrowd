@@ -1,4 +1,4 @@
-  var map, us_location, types = [], all_houses = []
+  var map, us_location, us_lat, us_lng, types = [], all_houses = []
 
   // generate differing sized candy icons
   var candy_pin = []
@@ -41,12 +41,18 @@
 
 
 
-
+  // round numbr
+  round = function(n, decimals) {
+      return Number((Math.round(n + "e" + decimals)  + "e-" + decimals));
+  }
 
 
 
   // google map init
   initialize = function() {
+
+    // make sure the geolocation api exists
+    navigator.geolocation || $(".no-geo").css("display", "block")
 
     // get user's position
     navigator.geolocation.getCurrentPosition(function(geo) {
@@ -66,6 +72,7 @@
       
       // get houses and put them on the map
       get_houses()
+
     }, function() {
       // no geolocation data
       $(".no-geo").css("display", "block")
@@ -84,6 +91,10 @@
       map: map,
       icon: user
     })
+
+    // set our coords for later
+    us_lat = geo.coords.latitude,
+    us_lng = geo.coords.longitude
   }
 
 
@@ -127,8 +138,23 @@
         icon: is_old(house) ? inactive : candy_pin[Math.floor(house.rating)]
       });
 
+      // user wants more info on a house
       marker.addListener('click', function() {
-        alert(house.types.join(", "));
+
+        // update the modal
+        $(".modal .selected-rating").html(house.rating / 10 * 100 + "%")
+        $(".modal .selected-geo-lat").html(house.lat)
+        $(".modal .selected-geo-lng").html(house.lng)
+
+        // update types of candy
+        if (house.types.indexOf("coco") !== -1) {
+          $(".modal .selected-img-coco").css("display", "block")
+        } else {
+          $(".modal .selected-img-coco").css("display", "none")
+        }
+
+        // show modal
+        $(".modal").modal("show")
       });
       all_houses.push(marker)
     })
@@ -136,13 +162,11 @@
 
   // add a new house with the current location
   add_new_house = function(rating, type) {
-    navigator.geolocation.getCurrentPosition(function(coords) {
-      socket.emit("new:house", {
-        rating: rating,
-        types: types,
-        lat: coords.coords.latitude,
-        lng: coords.coords.longitude
-      })
+    socket.emit("new:house", {
+      rating: rating,
+      types: types,
+      lat: us_lat,
+      lng: us_lng
     })
   }
 

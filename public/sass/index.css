@@ -4960,6 +4960,9 @@ input[type=range]::-ms-track {
   top: 60vh;
   padding-top: 40px; }
 
+.selected-img {
+  display: none; }
+
 table {
   max-height: 100%;
   width: 100%;

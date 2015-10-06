@@ -98,7 +98,7 @@ exports.main = ->
     # get all houses
     socket.on "get:house", (payload) ->
       House.find {}, (err, houses) ->
-        console.log houses
+        # console.log houses
         if err
           socket.emit "get:house:ack", err
         else
