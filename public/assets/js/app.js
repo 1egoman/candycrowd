@@ -71,6 +71,8 @@
       navigator.geolocation.watchPosition(reset_map_center)
       
       // get houses and put them on the map
+      us_lat = geo.coords.latitude
+      us_lng = geo.coords.longitude
       get_houses()
 
     }, function() {
@@ -93,7 +95,7 @@
     })
 
     // set our coords for later
-    us_lat = geo.coords.latitude,
+    us_lat = geo.coords.latitude
     us_lng = geo.coords.longitude
   }
 
@@ -188,7 +190,7 @@
   }
 
   get_houses = function() {
-    socket.emit("get:house")
+    socket.emit("get:house", {lat: us_lat, lng: us_lng})
   }
 
   new_house = function() {
