@@ -4961,7 +4961,8 @@ input[type=range]::-ms-track {
   padding-top: 40px; }
 
 .modal-dialog {
-  margin: 0px; }
+  margin: 0px;
+  width: 100%; }
 
 .modal-content {
   box-shadow: none;
