@@ -146,11 +146,28 @@
         $(".modal .selected-geo-lat").html(house.lat)
         $(".modal .selected-geo-lng").html(house.lng)
 
+        console.log(house.types)
+
         // update types of candy
-        if (house.types.indexOf("coco") !== -1) {
-          $(".modal .selected-img-coco").css("display", "block")
+        if (house.types.indexOf("chocolate") !== -1) {
+          $(".modal .selected-img-coco").css("display", "inline-block")
         } else {
           $(".modal .selected-img-coco").css("display", "none")
+        }
+        if (house.types.indexOf("taffy") !== -1) {
+          $(".modal .selected-img-taffy").css("display", "inline-block")
+        } else {
+          $(".modal .selected-img-taffy").css("display", "none")
+        }
+        if (house.types.indexOf("gummies") !== -1) {
+          $(".modal .selected-img-lifesaver").css("display", "inline-block")
+        } else {
+          $(".modal .selected-img-lifesaver").css("display", "none")
+        }
+        if (house.types.indexOf("bad") !== -1) {
+          $(".modal .selected-img-shit").css("display", "inline-block")
+        } else {
+          $(".modal .selected-img-shit").css("display", "none")
         }
 
         // show modal

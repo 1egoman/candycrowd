@@ -4961,7 +4961,8 @@ input[type=range]::-ms-track {
   padding-top: 40px; }
 
 .selected-img {
-  display: none; }
+  display: none;
+  width: 40px; }
 
 table {
   max-height: 100%;
